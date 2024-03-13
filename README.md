@@ -79,7 +79,8 @@ array=( worker1 worker2 worker3 )
 * Ensure api and ingress are configured on the cluster
   * [Replacing the default ingress certificate](https://docs.openshift.com/container-platform/4.15/security/certificates/replacing-default-ingress-certificate.html)
   * [Adding API server certificates](https://docs.openshift.com/container-platform/4.15/security/certificates/api-server.html)
-
+* cp `aap2-subscription-manifest.zip` to your home directory
+  
 
 ### Setting up the Hub Cluster
 
