@@ -80,7 +80,7 @@ array=( worker1 worker2 worker3 )
   * [Replacing the default ingress certificate](https://docs.openshift.com/container-platform/4.15/security/certificates/replacing-default-ingress-certificate.html)
   * [Adding API server certificates](https://docs.openshift.com/container-platform/4.15/security/certificates/api-server.html)
 * cp `aap2-subscription-manifest.zip` to your home directory
-  
+
 
 ### Setting up the Hub Cluster
 
@@ -121,6 +121,12 @@ ansible-playbook \
  -e vcenter_username="administrator@vsphere.local" \
  -e vcenter_password='somePass!' \
  -e vcenter_fqdn="vcenter.example.com" \
+ -e  create_pull_secret_secret=true \
+ -e create_ssh_key_secret=true \
+ -e create_vsphere_credentials_secret=true \
+ -e create_git_push_credentials_secret=true \
+ -e create_aap2_controller_secret=true \
+ -e git_push_credentials_secret_name=ztp-git-push-credentials \
  ansible/3_create_credentials.yaml
 ```
 
@@ -133,7 +139,8 @@ Once the Hub has been set up and configured, with Credentials available, you can
 There are a set of example variables that would be passed to the **Spoke Cluster Manifest Generation** Playbook in `example_vars` - use it as such:
 
 ```bash
-ansible-playbook -i ansible/inv_localhost -e "@ansible/example_vars/create_spoke_manifests-haCluster.yaml" ansible/create_spoke_manifests.yml
+$ vim nsible/example_vars/create_spoke_manifests-haCluster.yaml
+$ ansible-playbook -i ansible/inv_localhost -e "@ansible/example_vars/create_spoke_manifests-haCluster.yaml" ansible/4_create_spoke_manifests.yaml
 ```
 
 Now you just need to click the ***Sync*** button in RH GitOps!
