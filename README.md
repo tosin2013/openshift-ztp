@@ -117,6 +117,7 @@ ansible-playbook ansible/2_configure.yaml \
   -e pull_secret_path="~/rh-ocp-pull-secret.json"
 
 ## Create credentials for vSphere Infrastructure, Pull Secret, Git credentials, etc
+vim ansible/3_create_credentials.yaml
 ansible-playbook \
  -e vcenter_username="administrator@vsphere.local" \
  -e vcenter_password='somePass!' \
